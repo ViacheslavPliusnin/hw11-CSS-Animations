@@ -1,0 +1,137 @@
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+}
+
+/* Menu icon */
+.menu {
+    background-color: rgb(65, 65, 65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.icon {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+.menu_button, .menu_button_reverse {
+    height: 100px;
+    width: 200px;
+    border:none;
+    background-color: none;
+    opacity: 0;
+    position: absolute;
+    top: 100px;
+}
+.menu_button {
+    z-index: 998;
+}
+.menu_button_reverse {
+    z-index: 997;
+}
+.sword {
+    margin-top: 35px;
+    display: flex;
+    flex-direction: row;
+    height: 10px;
+    width: 200px;
+    background-color: white;
+    border: none;
+}
+.icon .sword:first-of-type {
+    margin-top: 0;
+}
+.sword_handle {
+background-color: white;
+width: 30px;
+height: 10px;
+}
+.sword_blackzone {
+    background-color: rgb(65, 65, 65);
+    height: 10px;
+    width: 20px;
+}
+.red {
+    flex-direction: row-reverse;
+}
+
+/* Hover */
+.menu_button:hover, .menu_button_reverse:hover {
+    cursor: pointer;
+}
+.menu_button:hover ~ .blue, .menu_button_reverse:hover ~ .blue {
+    background-color: rgb(200, 225, 255);
+    box-shadow: 10px 0px 30px 4px rgb(66, 121, 189);
+}
+.menu_button:hover ~ .red, .menu_button_reverse:hover ~ .red {
+    background-color: rgb(255, 194, 194); 
+    box-shadow: -10px 0px 30px 4px rgb(219, 51, 51);
+}
+.menu_button:hover ~ .green, .menu_button_reverse:hover ~ .green {
+    background-color: rgb(229, 255, 212); 
+    box-shadow: 10px 0px 30px 4px rgb(135, 230, 71);
+}
+
+
+/* Animations */
+.menu_button:checked ~ .menu_button_reverse {
+    z-index: 999;
+}
+.menu_button:checked ~ .blue {
+    animation: FadeBlue 0.2s linear forwards;
+}
+.menu_button:checked ~ .blue .sword_handle {
+    animation: FadeBlueHandle 0.2s linear forwards;
+}
+.menu_button:checked ~ .red {
+    animation: CrossSwordsRed 0.2s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+.menu_button:checked ~ .green {
+    animation: CrossSwordsGreen 0.2s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+@keyframes CrossSwordsGreen {
+    0% {transform: rotate(0) translateY(0) translateX(0);}
+    100% {transform: rotate(-35deg) translateY(-37px) translateX(27px); background-color: rgb(229, 255, 212); box-shadow: 10px 0px 30px 4px rgb(135, 230, 71);}
+}
+@keyframes CrossSwordsRed {
+    0% {transform: rotate(0)}
+    100% {transform: rotate(35deg); background-color: rgb(255, 194, 194); box-shadow: -10px 0px 30px 4px rgb(219, 51, 51);}
+}
+@keyframes FadeBlue {
+    0% {transform: translateY(0);}
+    100% {transform: translateY(-50px); background-color: transparent; box-shadow: none;}
+}
+@keyframes FadeBlueHandle {
+    0% {background-color: white;}
+    100% {background-color: transparent; box-shadow: none;}
+}
+
+/* Reverse animations */
+.menu_button_reverse:checked ~ .green {
+    animation: CrossSwordsGreenReverse 0.2s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+.menu_button_reverse:checked ~ .red {
+    animation: CrossSwordsRedReverse 0.2s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+.menu_button_reverse:checked ~ .blue {
+    animation: FadeBlueReverse 0.2s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+.menu_button_reverse:checked ~ .blue .sword_handle {
+    animation: FadeBlueHandleReverse 0.2s linear forwards;
+}
+@keyframes CrossSwordsGreenReverse {
+    0% {transform: rotate(-35deg) translateY(-37px) translateX(27px); background-color: rgb(229, 255, 212); box-shadow: 10px 0px 30px 4px rgb(135, 230, 71);}
+    100% {transform: rotate(0) translateY(0) translateX(0);}
+}
+@keyframes CrossSwordsRedReverse {
+    0% {transform: rotate(35deg); background-color: rgb(255, 194, 194); box-shadow: -10px 0px 30px 4px rgb(219, 51, 51);}
+    100% {transform: rotate(0)}
+}
+@keyframes FadeBlueReverse {
+    0% {transform: translateY(-50px); background-color: transparent; box-shadow: none;}
+    100% {transform: translateY(0);}
+}
+@keyframes FadeBlueHandleReverse {
+    0% {background-color: transparent; box-shadow: none;}
+    100% {background-color: white;}
+}
