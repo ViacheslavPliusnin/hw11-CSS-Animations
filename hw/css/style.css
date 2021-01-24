@@ -2,11 +2,15 @@
     margin: 0;
     padding: 0;
 }
+body {
+    background-color: rgb(65, 65, 65);
+    min-height: 100vh;
+}
 
 /* Menu icon */
-.menu {
-    background-color: rgb(65, 65, 65);
+.menu, .pendulum{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -78,16 +82,16 @@ height: 10px;
     z-index: 999;
 }
 .menu_button:checked ~ .blue {
-    animation: FadeBlue 0.2s linear forwards;
+    animation: FadeBlue 0.2s ease-in-out forwards;
 }
 .menu_button:checked ~ .blue .sword_handle {
-    animation: FadeBlueHandle 0.2s linear forwards;
+    animation: FadeBlueHandle 0.2s ease-in-out forwards;
 }
 .menu_button:checked ~ .red {
-    animation: CrossSwordsRed 0.2s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+    animation: CrossSwordsRed 0.2s ease-in-out forwards;
 }
 .menu_button:checked ~ .green {
-    animation: CrossSwordsGreen 0.2s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+    animation: CrossSwordsGreen 0.2s ease-in-out forwards;
 }
 @keyframes CrossSwordsGreen {
     0% {transform: rotate(0) translateY(0) translateX(0);}
@@ -108,16 +112,16 @@ height: 10px;
 
 /* Reverse animations */
 .menu_button_reverse:checked ~ .green {
-    animation: CrossSwordsGreenReverse 0.2s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+    animation: CrossSwordsGreenReverse 0.2s ease-in-out forwards;
 }
 .menu_button_reverse:checked ~ .red {
-    animation: CrossSwordsRedReverse 0.2s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+    animation: CrossSwordsRedReverse 0.2s ease-in-out forwards;
 }
 .menu_button_reverse:checked ~ .blue {
-    animation: FadeBlueReverse 0.2s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+    animation: FadeBlueReverse 0.2s ease-in-out forwards;
 }
 .menu_button_reverse:checked ~ .blue .sword_handle {
-    animation: FadeBlueHandleReverse 0.2s linear forwards;
+    animation: FadeBlueHandleReverse 0.2s ease-in-out forwards;
 }
 @keyframes CrossSwordsGreenReverse {
     0% {transform: rotate(-35deg) translateY(-37px) translateX(27px); background-color: rgb(229, 255, 212); box-shadow: 10px 0px 30px 4px rgb(135, 230, 71);}
@@ -134,4 +138,98 @@ height: 10px;
 @keyframes FadeBlueHandleReverse {
     0% {background-color: transparent; box-shadow: none;}
     100% {background-color: white;}
+}
+
+/* Pendulum */
+.pendulum-space {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: row;
+}
+.pendulum-item {
+    height: 50px;
+    width: 50px;
+    background-color: white;
+    border-radius: 50%;
+}
+.pendulum-shadow {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 50px;
+}
+.shadow {
+    height: 15px;
+    width: 50px;
+    border-radius: 50%;
+}
+.pendulum-space .pendulum-item:first-of-type {
+    background-color: rgb(135, 230, 71);
+    animation: PendulumLeft 0.4s linear alternate infinite;
+}
+.pendulum-space .pendulum-item:nth-of-type(2) {
+    background: linear-gradient(90deg, rgb(135,230,71) 0%, rgb(148,201,68) 100%);
+}
+.pendulum-space .pendulum-item:nth-of-type(3) {
+    background: linear-gradient(90deg, rgb(148,201,68) 0%, rgb(162,171,65) 100%);
+}
+.pendulum-space .pendulum-item:nth-of-type(4) {
+    background: linear-gradient(90deg, rgb(162,171,65) 0%, rgb(177,139,61) 100%);
+}
+.pendulum-space .pendulum-item:nth-of-type(5) {
+    background: linear-gradient(90deg, rgb(177,139,61) 0%, rgb(189,114,58) 100%);
+}
+.pendulum-space .pendulum-item:nth-of-type(6) {
+    background: linear-gradient(90deg, rgb(189,114,58) 0%, rgb(219, 51, 51) 100%);
+}
+.pendulum-space .pendulum-item:last-of-type {
+    background-color: rgb(219, 51, 51);
+    animation: PendulumRight 0.4s linear alternate infinite;
+    animation-delay: 0.4s;
+}
+.shadow:first-of-type {
+    background: radial-gradient(ellipse, rgba(135, 230, 71, 0.15), rgba(135, 230, 71, 0) 80%);
+    animation: PendulumShadowLeft 0.4s linear alternate infinite;
+}
+.shadow:nth-of-type(2) {
+    background: radial-gradient(ellipse, rgba(142, 214, 69, 0.15), rgba(142, 214, 69, 0) 80%);
+}
+.shadow:nth-of-type(3) {
+    background: radial-gradient(ellipse, rgba(156, 185, 66, 0.15), rgba(156, 185, 66, 0) 80%);
+}
+.shadow:nth-of-type(4) {
+    background: radial-gradient(ellipse, rgba(170, 153, 63, 0.15), rgba(170, 153, 63, 0) 80%);
+}
+.shadow:nth-of-type(5) {
+    background: radial-gradient(ellipse, rgba(183, 127, 60, 0.15), rgba(183, 127, 60, 0) 80%);
+}
+.shadow:nth-of-type(6) {
+    background: radial-gradient(ellipse, rgba(203, 86, 55, 0.15), rgba(203, 86, 55, 0) 80%);
+}
+.shadow:last-of-type {
+    background: radial-gradient(ellipse, rgba(219, 51, 51, 0.15), rgba(219, 51, 51, 0) 80%);
+    animation: PendulumShadowRight 0.4s linear alternate infinite;
+    animation-delay: 0.4s;
+}
+
+/* Animations */
+@keyframes PendulumLeft {
+    0% {transform: rotate(0) translateX(0);}
+    50% {transform: rotate(0) translateX(0);}
+    100% {transform: rotate(45deg) translateX(-150px);}
+}
+@keyframes PendulumRight {
+    0% {transform: rotate(0) translateX(0);}
+    50% {transform: rotate(0) translateX(0);}
+    100% {transform: rotate(-45deg) translateX(150px);}
+}
+@keyframes PendulumShadowLeft {
+    0% {transform: translateX(0);}
+    50% {transform: translateX(0);}
+    100% {transform: translateX(-110px);}
+}
+@keyframes PendulumShadowRight {
+    0% {transform: translateX(0);}
+    50% {transform: translateX(0);}
+    100% {transform: translateX(110px);}
 }
