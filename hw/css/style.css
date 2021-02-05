@@ -152,61 +152,59 @@ height: 10px;
     background-color: white;
     border-radius: 50%;
 }
-.pendulum-shadow {
-    margin-top: 50px;
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 50px;
-}
-.shadow {
+.pendulum-item::after {
+    content: "";
+    display: block;
+    margin-top: 100px;
     height: 15px;
     width: 50px;
     border-radius: 50%;
 }
-.pendulum-space .pendulum-item:first-of-type {
+.pendulum-item:first-child {
     background-color: rgb(135, 230, 71);
     animation: PendulumLeft 0.4s linear alternate infinite;
 }
-.pendulum-space .pendulum-item:nth-of-type(2) {
+.pendulum-item:nth-child(2) {
     background: linear-gradient(90deg, rgb(135,230,71) 0%, rgb(148,201,68) 100%);
 }
-.pendulum-space .pendulum-item:nth-of-type(3) {
+.pendulum-item:nth-child(3) {
     background: linear-gradient(90deg, rgb(148,201,68) 0%, rgb(162,171,65) 100%);
 }
-.pendulum-space .pendulum-item:nth-of-type(4) {
+.pendulum-item:nth-child(4) {
     background: linear-gradient(90deg, rgb(162,171,65) 0%, rgb(177,139,61) 100%);
 }
-.pendulum-space .pendulum-item:nth-of-type(5) {
+.pendulum-item:nth-child(5) {
     background: linear-gradient(90deg, rgb(177,139,61) 0%, rgb(189,114,58) 100%);
 }
-.pendulum-space .pendulum-item:nth-of-type(6) {
+.pendulum-item:nth-child(6) {
     background: linear-gradient(90deg, rgb(189,114,58) 0%, rgb(219, 51, 51) 100%);
 }
-.pendulum-space .pendulum-item:last-of-type {
+.pendulum-item:last-child {
     background-color: rgb(219, 51, 51);
     animation: PendulumRight 0.4s linear alternate infinite;
     animation-delay: 0.4s;
 }
-.shadow:first-of-type {
+
+.pendulum-item:first-child::after {
     background: radial-gradient(ellipse, rgba(135, 230, 71, 0.15), rgba(135, 230, 71, 0) 80%);
     animation: PendulumShadowLeft 0.4s linear alternate infinite;
 }
-.shadow:nth-of-type(2) {
+.pendulum-item:nth-child(2)::after {
     background: radial-gradient(ellipse, rgba(142, 214, 69, 0.15), rgba(142, 214, 69, 0) 80%);
 }
-.shadow:nth-of-type(3) {
+.pendulum-item:nth-child(3)::after {
     background: radial-gradient(ellipse, rgba(156, 185, 66, 0.15), rgba(156, 185, 66, 0) 80%);
 }
-.shadow:nth-of-type(4) {
+.pendulum-item:nth-child(4)::after {
     background: radial-gradient(ellipse, rgba(170, 153, 63, 0.15), rgba(170, 153, 63, 0) 80%);
 }
-.shadow:nth-of-type(5) {
+.pendulum-item:nth-child(5)::after {
     background: radial-gradient(ellipse, rgba(183, 127, 60, 0.15), rgba(183, 127, 60, 0) 80%);
 }
-.shadow:nth-of-type(6) {
+.pendulum-item:nth-child(6)::after {
     background: radial-gradient(ellipse, rgba(203, 86, 55, 0.15), rgba(203, 86, 55, 0) 80%);
 }
-.shadow:last-of-type {
+.pendulum-item:last-child::after {
     background: radial-gradient(ellipse, rgba(219, 51, 51, 0.15), rgba(219, 51, 51, 0) 80%);
     animation: PendulumShadowRight 0.4s linear alternate infinite;
     animation-delay: 0.4s;
@@ -226,10 +224,10 @@ height: 10px;
 @keyframes PendulumShadowLeft {
     0% {transform: translateX(0);}
     50% {transform: translateX(0);}
-    100% {transform: translateX(-110px);}
+    100% {transform: rotate(-45deg) translateX(50px) translateY(115px);}
 }
 @keyframes PendulumShadowRight {
     0% {transform: translateX(0);}
     50% {transform: translateX(0);}
-    100% {transform: translateX(110px);}
+    100% {transform: rotate(45deg) translateX(-50px) translateY(115px);}
 }
